@@ -9,13 +9,14 @@ const currentPath = Astro.url.pathname;
 
 import Logo from '../components/Logo.astro';
 
+const baseUrl = import.meta.env.BASE_URL;
 const menuItems = [
-  { href: '/plan-wycieczki', label: 'Plan wycieczki', icon: '📅' },
-  { href: '/lot-i-bagaz', label: 'Lot i bagaż', icon: '✈️' },
-  { href: '/nurkowanie', label: 'Nurkowanie', icon: '🤿' },
-  { href: '/checklista', label: 'Checklista', icon: '🧳' },
-  { href: '/jedzenie', label: 'Jedzenie', icon: '🍽️' },
-  { href: '/slowniczek', label: 'Słowniczek', icon: '📖' },
+  { href: `${baseUrl}/plan-wycieczki`, label: 'Plan wycieczki', icon: '📅' },
+  { href: `${baseUrl}/lot-i-bagaz`, label: 'Lot i bagaż', icon: '✈️' },
+  { href: `${baseUrl}/nurkowanie`, label: 'Nurkowanie', icon: '🤿' },
+  { href: `${baseUrl}/checklista`, label: 'Checklista', icon: '🧳' },
+  { href: `${baseUrl}/jedzenie`, label: 'Jedzenie', icon: '🍽️' },
+  { href: `${baseUrl}/slowniczek`, label: 'Słowniczek', icon: '📖' },
 ];
 ---
 
@@ -25,7 +26,7 @@ const menuItems = [
   <meta charset="UTF-8" />
   <meta name="description" content={description} />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
   <style is:global>
     html {
       font-family: system-ui, sans-serif;
