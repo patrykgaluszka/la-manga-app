@@ -228,6 +228,9 @@ const menuItems = [
     const overlay = document.getElementById('sidebar-overlay');
 
     function toggleMobileMenu() {
+      if (!sidebar || !overlay) {
+        return;
+      }
       const isOpen = !sidebar.classList.contains('-translate-x-full');
       
       if (isOpen) {
@@ -246,7 +249,7 @@ const menuItems = [
 
     // Close menu on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+      if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
         toggleMobileMenu();
       }
     });

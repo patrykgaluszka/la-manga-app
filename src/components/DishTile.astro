@@ -21,7 +21,7 @@ const { title, desc, imageSrc } = Astro.props;
           src={imageSrc} 
           alt={title}
           class="w-full h-48 object-cover rounded-lg"
-          lazyload="true"
+          loading="lazy"
         />
       </div>
     ) : null}
