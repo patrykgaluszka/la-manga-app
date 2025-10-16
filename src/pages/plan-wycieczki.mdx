@@ -1,0 +1,61 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Plan Wycieczki
+---
+
+import Schedule from '../components/Schedule.tsx';
+import airportImg from '../assets/places/airport.jpg';
+import laMangaImg from '../assets/places/la-manga.jpg';
+import dive1Img from '../assets/places/dive-1.jpg';
+import murciaImg from '../assets/places/murcia.jpg';
+import beachImg from '../assets/places/beach.jpg';
+import dive2Img from '../assets/places/dive-2.jpg';
+import cartagenaImg from '../assets/places/cartagena.jpeg';
+import nightDiveImg from '../assets/places/night-dive.jpg';
+
+export const tripDays = [
+  {
+    title: "Przyjazd do La Manga",
+    desc: "Po wylądowaniu w Alicante jedziemy prywatnym busem prosto do apartamentów. Zawozimy sprzęt do poblisiego centeum nurkowego, dopełniamy formalności i aklimatyzujemy się w La Mandze.",
+    image: laMangaImg.src
+  },
+  {
+    title: "Zwiedzanie Murcji",
+    desc: "Rano (ok 9-9:30) jedziemy do Murcji, zwiedzić stolicę regionu. Powrót do apartamentów ok. 16.",
+    image: murciaImg.src 
+  },
+  {
+    title: "Rozgrzewkowe nurkowanie",
+    desc: "O 8:30 wyruszamy z centrum nurkowego na nurkowania z brzegu w zatokach  Cala Escalera i/lub Cala Corroes. Będzie to czas na spokojne przyzwyczajenie się do warunków i dostosowanie balastu/konfiguracji. Ok 14:00 wracamy z nurkowania, czas wolny.", 
+    image: dive1Img.src
+  },
+  {
+    title: "Nurkowanie aż do nocy",
+    desc: "O 8:30 wyruszamy z centrum nurkowego. Nurkujemy w rezerwacie Cartegena, gdzie oglądamy kilka małych wraków, w tym śmigłowca Sea King. Ok 14:00 wracamy z nurkowania, aby zjeść obiad i odpocząć. Nurkowanie nocne robimy o 20:00.",
+    image: nightDiveImg.src
+  },
+  {
+    title: "Chill w Kartagenie",
+    desc: "Wysypiamy się po nurkowaniu nocnym i po późnym śniadaniu jedziemy do Kartageny. Opcjonalne zwiedzanie Teatru Rzymskiego i Muzeum morskiego. Spacer po porcie i starówce można zwieńczyć jedzeniem tapas w jednej z okolicznych knajp.",
+    image: cartagenaImg.src 
+  },
+  {
+    title: "Nurkowanie wrakowe",
+    desc: "O 8:30 wyruszamy z centrum nurkowego. Nurkujemy na wraku Naranjito i w rezerwacie Islas Hormigas. Ok 14:00 wracamy z nurkowania, czas wolny.",
+    image: dive2Img.src
+  },
+  {
+    title: "Plażing i smażing",
+    desc: "Dzień wolny do zagospodarowania wedle potrzeb. Chętnym proponuję pojechać rowerami na koniec mierzei, bądź wybrać się na spacer.",
+    image: beachImg.src
+  },
+  {
+    title: "Wylot z Alicante",
+    desc: "Ostatni dzień i powrót do domu.",
+    image:  airportImg.src 
+  }
+];
+
+# Plan wycieczki
+
+<Schedule days={tripDays} startDate="18.10.2025" client:load />

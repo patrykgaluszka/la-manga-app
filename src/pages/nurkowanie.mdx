@@ -1,0 +1,341 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Nurkowanie
+---
+
+import Tile from '../components/Tile.astro';
+import Part from '../components/Part.astro';
+import SectionsMenu from '../components/SectionsMenu.tsx';
+import FaunaFloraSearch from '../components/FaunaFloraSearch.tsx';
+import TwoColumnSection from '../components/TwoColumnSection.astro';
+import VideoModal from '../components/VideoModal.tsx';
+
+import epinephelusMarginatusImg from "../assets/diving/epinephelus-marginatus.jpg";
+import dentexDentexImg from "../assets/diving/dentex-dentex.jpg";
+import seriolaDumeriliImg from "../assets/diving/seriola-dumerili.jpg";
+import sardaSardaImg from "../assets/diving/sarda-sarda.jpg";
+import auxisRocheiImg from "../assets/diving/auxis-rochei.jpg";
+import sphyraenaSphyraenaImg from "../assets/diving/sphyraena-sphyraena.webp";
+import sparusAurataImg from "../assets/diving/sparus-aurata.jpg";
+import chromisChromisImg from "../assets/diving/chromis-chromis.jpg";
+import sarpaSalpaImg from "../assets/diving/sarpa-salpa.jpg";
+import myliobatisAquilaImg from "../assets/diving/myliobatis-aquila.jpg";
+import torpedoMarmorataImg from "../assets/diving/torpedo-marmorata.webp";
+import muraenaHelenaImg from "../assets/diving/muraena-helena.jpg";
+import congerCongerImg from "../assets/diving/conger-conger.jpg";
+import scorpaenaScrofaImg from "../assets/diving/scorpaena-scrofa.jpg";
+import phycisPhycisImg from "../assets/diving/phycis-phycis.jpg";
+import octopusVulgarisImg from "../assets/diving/octopus-vulgaris.jpg";
+import sepiaOfficinalisImg from "../assets/diving/sepia-officinalis.jpg";
+import nudibranchiaImg from "../assets/diving/nudibranchia.jpg";
+import palinurusElephasImg from "../assets/diving/palinurus-elephas.jpg";
+import molaMolaImg from "../assets/diving/mola-mola.webp";
+import carettaCarettaImg from "../assets/diving/caretta-caretta.jpg";
+import delphinidaeImg from "../assets/diving/delphinidae.jpg";
+import balistesCapriscusImg from "../assets/diving/balistes-capriscus.jpg";
+import dasyatisPastinacaImg from "../assets/diving/dasyatis-pastinaca.jpg";
+import scyliorhinusCaniculaImg from "../assets/diving/scyliorhinus-canicula.jpg";
+import mustelusMustelusImg from "../assets/diving/mustelus-mustelus.jpg";
+
+import seaKingImg from "../assets/places/sea-king-wreck.jpeg";
+import naranjitoImg from "../assets/places/naranjito-wreck.jpg";
+import caboDePalosImg from "../assets/places/cabo-de-palos.jpg";
+import islasHormigasImg from "../assets/places/islas-hormigas.png";
+
+export const species = [
+  {
+    "commonName": "Dusky grouper",
+    "scientificName": "Epinephelus marginatus",
+    "plName": "Granik wielki",
+    "esName": "Mero",
+    "seasonality": "year-round",
+    "notes": "Ikoniczny gatunek rezerwatu; spotykany przy skałach i wrakach. Dorasta do imponujących rozmiarów i często towarzyszy nurkom z bliska, nie bojąc się ludzi. Preferuje skaliste siedliska, gdzie znajduje schronienie w jaskiniach i szczelinach. Obserwacja granika to jedno z największych przeżyć nurkowych w Cabo de Palos.",
+    "imageSrc": epinephelusMarginatusImg.src
+  },
+  {
+    "commonName": "Dentex",
+    "scientificName": "Dentex dentex",
+    "plName": "Kielczak śródziemnomorski",
+    "esName": "Dentón",
+    "seasonality": "year-round",
+    "notes": "Duża ryba drapieżna, często poluje przy rafach. Charakteryzuje się potężnymi szczękami i ostrymi zębami, dzięki którym bez trudu radzi sobie z ofiarami. Jest szybki i czujny, dlatego trudny do podejścia. Spotkanie z dentonem to gratka dla fotografów podwodnych.",
+    "imageSrc": dentexDentexImg.src
+  },
+  {
+    "commonName": "Amberjack",
+    "scientificName": "Seriola dumerili",
+    "plName": "Seriola",
+    "esName": "Pez limón",
+    "seasonality": "summer–autumn",
+    "notes": "Często widywana w dużych ławicach; silna ryba pelagiczna. To gatunek migrujący, który pojawia się w rezerwacie głównie w ciepłych miesiącach. Nurkowie mogą obserwować jej szybkie, skoordynowane ruchy, gdy poluje na mniejsze ryby. Seriola potrafi osiągać znaczne rozmiary, imponując siłą i dynamiką.",
+    "imageSrc": seriolaDumeriliImg.src
+  },
+  {
+    "commonName": "Bonito",
+    "scientificName": "Sarda sarda",
+    "plName": "Pelamida",
+    "esName": "Bonito del Atlántico",
+    "seasonality": "summer–autumn",
+    "notes": "Ryba pelagiczna przypominająca tuńczyka, widywana podczas migracji. Tworzy stada, które przemieszczają się szybko przez otwarte wody. Jest ceniona w rybołówstwie, ale także często spotykana przez nurków. Jej obecność dodaje dynamiki podwodnym obserwacjom.",
+    "imageSrc": sardaSardaImg.src
+  },
+  {
+    "commonName": "Bullet tuna",
+    "scientificName": "Auxis rochei",
+    "plName": "Tuńczyk kulisty",
+    "esName": "Melva",
+    "seasonality": "summer–autumn",
+    "notes": "Mały tuńczyk, widywany w otwartej wodzie. Wyróżnia się smukłym kształtem ciała i szybkim sposobem poruszania się. Spotykany jest zwykle w ławicach, często w towarzystwie innych pelagicznych ryb. Obserwacja tych stad jest wyjątkowym doświadczeniem podczas nurkowania w lecie.",
+    "imageSrc": auxisRocheiImg.src
+  },
+  {
+    "commonName": "Mediterranean barracuda",
+    "scientificName": "Sphyraena sphyraena",
+    "plName": "Barakuda śródziemnomorska",
+    "esName": "Barracuda",
+    "seasonality": "year-round",
+    "notes": "Formuje duże ławice, charakterystyczny drapieżnik rezerwatu. Ma wydłużone ciało i ostre zęby, które budzą respekt. Spotkanie z grupą barakud unoszących się nieruchomo w toni robi ogromne wrażenie. Często towarzyszą nurkom w trakcie eksploracji wraków i skał.",
+    "imageSrc": sphyraenaSphyraenaImg.src
+  },
+  {
+    "commonName": "Sea bream",
+    "scientificName": "Sparus aurata",
+    "plName": "Dorada",
+    "esName": "Dorada",
+    "seasonality": "year-round",
+    "notes": "Liczne gatunki popularne w całym Morzu Śródziemnym. Dorady są cenione zarówno przez kucharzy, jak i przez nurków. Spotykane w stadach w pobliżu posidonii i raf skalnych. Często zbliżają się do nurków, dając możliwość spokojnej obserwacji.",
+    "imageSrc": sparusAurataImg.src
+  },
+  {
+    "commonName": "Triggerfish",
+    "scientificName": "Balistes capriscus",
+    "plName": "Balist szary",
+    "esName": "Pez ballesta",
+    "seasonality": "summer–autumn",
+    "notes": "Często widywany w cieplejszych miesiącach; charakterystyczna ryba o mocnych zębach. Żeruje przy dnie, rozgryzając skorupiaki i mięczaki. Ma nietypowy kształt ciała i płetwy grzbietowej, którą może blokować niczym zatrzask. Spotkanie z balistem to ciekawe doświadczenie, choć czasem bywa terytorialny.",
+    "imageSrc": balistesCapriscusImg.src
+  },
+  {
+    "commonName": "Damselfish",
+    "scientificName": "Chromis chromis",
+    "plName": "Chromis kasztanowy",
+    "esName": "Castañuela",
+    "seasonality": "year-round",
+    "notes": "Bardzo liczne małe ryby, tworzące chmury nad rafą. Są niezwykle charakterystyczne, ponieważ unoszą się całymi stadami nad skałami i gorgoniami. W słońcu mienią się odcieniami granatu i fioletu. To jedne z najczęściej spotykanych ryb w Cabo de Palos.",
+    "imageSrc": chromisChromisImg.src
+  },
+  {
+    "commonName": "Salema",
+    "scientificName": "Sarpa salpa",
+    "plName": "Salema",
+    "esName": "Salema",
+    "seasonality": "year-round",
+    "notes": "Ławicowa ryba roślinożerna, łatwa do zauważenia. Charakterystyczne złote pasy wzdłuż ciała sprawiają, że jest łatwa do rozpoznania. Żywi się głównie roślinnością, szczególnie posidonią. Nurkowie często obserwują duże grupy salem spokojnie żerujących przy rafach.",
+    "imageSrc": sarpaSalpaImg.src
+  },
+  {
+    "commonName": "Common stingray",
+    "scientificName": "Dasyatis pastinaca",
+    "plName": "Płaszczka zwyczajna",
+    "esName": "Raya común",
+    "seasonality": "spring–autumn",
+    "notes": "Płaszczka ta często zagrzebuje się w piaszczystym dnie, gdzie czeka na ofiarę. Może osiągać ponad metr długości. Choć wyposażona jest w kolec jadowy, rzadko stanowi zagrożenie dla człowieka. Spotykana na płytszych i średnich głębokościach w wodach Murcji.",
+    "imageSrc": dasyatisPastinacaImg.src
+  },
+  {
+    "commonName": "Eagle ray",
+    "scientificName": "Myliobatis aquila",
+    "plName": "Orleń pospolity",
+    "esName": "Águila marina",
+    "seasonality": "spring–autumn",
+    "notes": "Płaszczka o charakterystycznych 'skrzydłach', spotykana na piasku. Przemieszcza się majestatycznie, przypominając lot ptaka pod wodą. Często widywana w parach lub małych grupach. Spotkanie z orleniem to dla wielu nurków niezapomniane przeżycie.",
+    "imageSrc": myliobatisAquilaImg.src
+  },
+  {
+    "commonName": "Electric ray",
+    "scientificName": "Torpedo marmorata",
+    "plName": "Drętwa europejska",
+    "esName": "Torpedo",
+    "seasonality": "spring–autumn",
+    "notes": "Średniej wielkości ryba o brązowym ubarwieniu z marmurkowym deseniem, zaopatrzona w dwa duże narządy elektryczne. Potrafi wytwarzać napięcie do 200 V, które wykorzystuje do obrony i polowania. Prowadzi nocny tryb życia i w ciągu dnia często zagrzebuje się w piasku. Dla nurków stanowi ciekawe, choć rzadziej spotykane zjawisko.",
+    "imageSrc": torpedoMarmorataImg.src
+  },
+  {
+    "commonName": "Moray eel",
+    "scientificName": "Muraena helena",
+    "plName": "Murena śródziemnomorska",
+    "esName": "Morena",
+    "seasonality": "year-round",
+    "notes": "Ukrywa się w szczelinach skał; widoczna głowa z otwartymi szczękami. Budzi respekt swoim wyglądem, ale rzadko bywa niebezpieczna. Nurkowie mogą często obserwować jej charakterystyczny sposób oddychania. W nocy wychodzi z kryjówek na żer.",
+    "imageSrc": muraenaHelenaImg.src
+  },
+  {
+    "commonName": "Conger eel",
+    "scientificName": "Conger conger",
+    "plName": "Konger",
+    "esName": "Congrio",
+    "seasonality": "year-round",
+    "notes": "Duży węgorz, często w jaskiniach i wrakach. Może osiągać imponujące rozmiary przekraczające 2 metry długości. Prowadzi nocny tryb życia, polując na ryby i skorupiaki. Spotkanie z kongerem bywa zaskakujące, gdy nagle wychyla się z ciemnej szczeliny.",
+    "imageSrc": congerCongerImg.src
+  },
+  {
+    "commonName": "Scorpionfish",
+    "scientificName": "Scorpaena scrofa",
+    "plName": "Skorpena",
+    "esName": "Rascacio",
+    "seasonality": "year-round",
+    "notes": "Kamufluje się na dnie; ma kolce jadowe. Jej czerwonobrązowe ubarwienie doskonale wtapia się w skały i gąbki. Skorpena jest mało ruchliwa, co czyni ją łatwym obiektem do obserwacji. Nurkowie muszą jednak uważać, aby nie nadepnąć na nią przypadkiem.",
+    "imageSrc": scorpaenaScrofaImg.src
+  },
+  {
+    "commonName": "Forkbeard",
+    "scientificName": "Phycis phycis",
+    "plName": "Widłobrody",
+    "esName": "Abadejo",
+    "seasonality": "year-round",
+    "notes": "Ryba denne, preferująca jaskinie i zakamarki. Ma charakterystyczne wąsy czuciowe, które pomagają jej w poszukiwaniu pożywienia. Jest aktywna głównie w nocy, gdy wychodzi na polowania. Spotykana najczęściej podczas eksploracji wraków.",
+    "imageSrc": phycisPhycisImg.src
+  },
+  {
+    "commonName": "Octopus",
+    "scientificName": "Octopus vulgaris",
+    "plName": "Ośmiornica zwyczajna",
+    "esName": "Pulpo común",
+    "seasonality": "year-round",
+    "notes": "Inteligentny głowonóg, dobrze maskuje się w otoczeniu. Potrafi zmieniać kolor i fakturę skóry, aby zlać się z otoczeniem. Często spotykany przy skałach, gdzie buduje swoje kryjówki z muszli. Obserwacja ośmiornicy to fascynujące doświadczenie ze względu na jej zachowania.",
+    "imageSrc": octopusVulgarisImg.src
+  },
+  {
+    "commonName": "Cuttlefish",
+    "scientificName": "Sepia officinalis",
+    "plName": "Mątwa zwyczajna",
+    "esName": "Sepia",
+    "seasonality": "spring–summer",
+    "notes": "Widoczna w okresie godowym; mistrz kamuflażu. Posiada specjalne narządy pozwalające na błyskawiczną zmianę barwy. Jest niezwykle ciekawa i często obserwuje nurków z bliska. Jej podłużny kształt ciała i płetwy nadają jej elegancki wygląd.",
+    "imageSrc": sepiaOfficinalisImg.src
+  },
+  {
+    "commonName": "Nudibranchs",
+    "scientificName": "Nudibranchia",
+    "plName": "Nagoskrzelne",
+    "esName": "Nudibranquios",
+    "seasonality": "year-round",
+    "notes": "Kolorowe ślimaki morskie, chętnie fotografowane przez nurków. Występują w wielu kształtach i barwach, często bardzo kontrastowych. Ich niewielkie rozmiary sprawiają, że wymagają uważnego obserwowania dna. Dla miłośników makrofotografii to prawdziwy skarb.",
+    "imageSrc": nudibranchiaImg.src
+  },
+  {
+    "commonName": "European spiny lobster",
+    "scientificName": "Palinurus elephas",
+    "plName": "Langusta europejska",
+    "esName": "Langosta",
+    "seasonality": "spring–autumn",
+    "notes": "Spotykana w szczelinach skalnych, ceniona w kuchni. Ma długie czułki, które zdradzają jej obecność, zanim zobaczymy całe ciało. Jest zwierzęciem nocnym, które wychodzi na żer po zmroku. Dla nurków jej spotkanie to zawsze duża atrakcja.",
+    "imageSrc": palinurusElephasImg.src
+  },
+    {
+    "commonName": "Small-spotted catshark",
+    "scientificName": "Scyliorhinus canicula",
+    "plName": "Rekin psi",
+    "esName": "Pintarroja",
+    "seasonality": "year-round",
+    "notes": "To niewielki gatunek rekina, dorastający do około 1 metra długości. Charakteryzuje się brunatnym ciałem z licznymi plamkami. Żyje przy dnie i jest aktywny głównie nocą. Spotykany bardzo często w rezerwacie, zwłaszcza w pobliżu skalistych raf.",
+    "imageSrc": scyliorhinusCaniculaImg.src
+  },
+  {
+    "commonName": "Smooth-hound",
+    "scientificName": "Mustelus mustelus",
+    "plName": "Gładkonos zwyczajny",
+    "esName": "Cazón",
+    "seasonality": "summer–autumn",
+    "notes": "To rekin denne, preferujący piaszczyste i żwirowe podłoże. Dorasta do około 2 metrów długości, choć najczęściej spotyka się mniejsze osobniki. Jest całkowicie niegroźny dla człowieka, żywi się głównie skorupiakami i małymi rybami. W wodach Murcji bywa obserwowany podczas letnich nurkowań.",
+    "imageSrc": mustelusMustelusImg.src
+  },
+  {
+    "commonName": "Ocean sunfish",
+    "scientificName": "Mola mola",
+    "plName": "Samogłów",
+    "esName": "Pez luna",
+    "seasonality": "summer–autumn",
+    "notes": "Największa ryba kostnoszkieletowa świata, pojawia się sezonowo. Charakteryzuje się niezwykle płaskim ciałem i powolnym sposobem poruszania się. Często pływa blisko powierzchni, gdzie wygrzewa się w słońcu. Spotkanie z samogłowem jest jednym z najbardziej niezwykłych doświadczeń w Morzu Śródziemnym.",
+    "imageSrc": molaMolaImg.src
+  },
+  {
+    "commonName": "Loggerhead turtle",
+    "scientificName": "Caretta caretta",
+    "plName": "Żółw karetta",
+    "esName": "Tortuga boba",
+    "seasonality": "summer",
+    "notes": "Karapaks ma 5 par rogowych tarcz żebrowych, co odróżnia go od innych gatunków żółwi. Kończyny przekształcone w płetwy mają po dwa pazury, które ułatwiają pływanie. Żółwie te pojawiają się w rezerwacie głównie latem, w cieplejszych wodach. To jedyny gatunek żółwia, który rozmnaża się w Morzu Śródziemnym.",
+    "imageSrc": carettaCarettaImg.src
+  },
+  {
+    "commonName": "Dolphin",
+    "scientificName": "Delphinidae",
+    "plName": "Delfin",
+    "esName": "Delfín",
+    "seasonality": "year-round",
+    "notes": "Często spotykane w drodze do rezerwatu łodzią. Delfiny poruszają się w stadach, demonstrując swoje akrobatyczne umiejętności. Obserwacja ich w naturalnym środowisku to zawsze niezwykłe przeżycie. Są inteligentne i ciekawskie, często podpływają w pobliże jednostek pływających.",
+    "imageSrc": delphinidaeImg.src
+  },
+];
+
+export const seasonalityMap = {
+  "year-round": "🌍 Cały rok",
+  "summer": "☀️ Lato",
+  "summer–autumn": "☀️🍂 Lato – Jesień",
+  "spring–autumn": "🌸🍂 Wiosna – Jesień",
+  "winter": "❄️ Zima"
+};
+
+# Nurkowanie
+
+<SectionsMenu client:load />
+
+<FaunaFloraSearch species={species} seasonalityMap={seasonalityMap} client:load />
+
+<Part>
+## Temperatura wody
+W październiku w **Cabo de Palos** panują wciąż bardzo dobre warunki. Powietrze osiąga około 25 °C w dzień i 16 °C w nocy, a woda przy powierzchni utrzymuje się średnio na poziomie 22–23 °C. Poniżej termokliny, na głębokości 20–30 m, temperatura spada do 18–20 °C, dlatego komfortowo nurkuje się w piankach 5 mm z dociepleniem. Widoczność w rezerwacie jest doskonała, a morze przeważnie spokojne.
+
+Na Malcie o tej samej porze roku warunki są bardzo podobne. Powietrze jest nieco **cieplejsze** (26–27 °C w dzień), a woda przy powierzchni ma średnio **24–25 °C**. Termoklina jest odczuwalna dopiero poniżej 25 m, gdzie temperatura może spaść do 20–21 °C, czyli odrobinę cieplej niż w Cabo de Palos.
+</Part>
+
+<TwoColumnSection 
+  title="Cabo de Palos" 
+  imgSrc={caboDePalosImg.src} 
+  imgAlt="View at Cabo de Palos"
+>
+  Cabo de Palos to jeden z najbardziej znanych punktów nurkowych na Morzu Śródziemnym. Malownicze wybrzeże kryje pod wodą skaliste ściany, podwodne kaniony oraz wraki statków, które od lat przyciągają nurków z całego świata. Rezerwat charakteryzuje się doskonałą widocznością i bogactwem życia morskiego – od barwnych ławic salem, przez muren i skorpeny, aż po majestatyczne graniki i stada barakud. To idealne miejsce zarówno dla początkujących, jak i dla bardziej doświadczonych nurków szukających spektakularnych zanurzeń.
+
+  Wody regionu Murcji, do którego należy Cabo de Palos, uznawane są przez naukowców za jedne z najważniejszych siedlisk dla rzadkich gatunków rekinów i płaszczek. Ciepłe prądy i bogate w życie podwodne enklawy tworzą idealne warunki do rozrodu i migracji wielu zagrożonych gatunków. Międzynarodowa Unia Ochrony Przyrody (IUCN) prowadzi tu badania nad rekinami czarnymi i latarnianymi, a także nad endemicznie występującą płaszczką gwiaździstą. Ze względu na tę wyjątkową bioróżnorodność, lokalne uniwersytety zaproponowały objęcie całego odcinka wybrzeża – od San Pedro del Pinatar aż po Calblanque – statusem Ważnego Obszaru Rekinów i Płaszczek (ISRA). Choć takie wyróżnienie nie daje pełnej ochrony prawnej, podkreśla znaczenie Cabo de Palos jako kluczowego miejsca dla przetrwania rzadkich gatunków i łączy jego atrakcyjność turystyczną z rolą w ochronie przyrody Morza Śródziemnego.
+  
+  <VideoModal videoId="Q_HUMNIHoDc" client:load />
+</TwoColumnSection>
+
+<TwoColumnSection 
+  title="Islas Hormigas" 
+  imgSrc={islasHormigasImg.src} 
+  imgAlt="Marine life at Islas Hormigas"
+>
+  Islas Hormigas, położone kilka kilometrów od Cabo de Palos, to serce rezerwatu morskiego. Obszar ten został oficjalnie ogłoszony chronionym rezerwatem morskim w 1995 roku, po latach starań lokalnych rybaków i naukowców, którzy dostrzegli konieczność ochrony przełowionych wód. Dzięki wprowadzeniu regulacji ograniczających połowy i żeglugę, ekosystem odzyskał równowagę, a populacje wielu gatunków zaczęły się odradzać. Dziś rezerwat stanowi przykład skutecznej ochrony środowiska morskiego w Hiszpanii – ryby osiągają tu imponujące rozmiary, a nurkowie mają unikalną okazję podziwiać środowisko niemal nienaruszone działalnością człowieka. Pod wodą można spotkać ogromne ławice pelagicznych ryb, w tym seriolę, tuńczyki i barrakudy, a także orlenie i samogłowy. Nurkowanie tutaj daje poczucie kontaktu z dziką, niezmienioną przyrodą Morza Śródziemnego i pozostawia niezapomniane wrażenia nawet u najbardziej doświadczonych miłośników podwodnego świata.
+  
+  <VideoModal videoId="IORDNf5nepI" client:load />
+</TwoColumnSection>
+
+<TwoColumnSection 
+  title="Wrak transportowca Naranjito" 
+  imgSrc={naranjitoImg.src} 
+  imgAlt="Sea King helicopter wreck diving site"
+>
+  „Naranjito”, czyli El Carbonero, to jeden z najsłynniejszych wraków regionu. Leży na głębokości około 40 metrów i jest dostępny dla zaawansowanych nurków. Był to statek transportowy, który zatonął w 1946 roku z ładunkiem pomarańczy – stąd jego potoczna nazwa. Dziś wrak stanowi dom dla muren, kongerów, langust i ogromnych ławic ryb, a jego rozmiary i historia sprawiają, że nurkowanie na Naranjito należy do najbardziej pamiętnych przeżyć w Cabo de Palos.
+
+  <VideoModal videoId="PwkKAwG31zQ" client:load />
+</TwoColumnSection>
+
+<TwoColumnSection 
+  title="Wrak helikoptera Sea King" 
+  imgSrc={seaKingImg.src} 
+  imgAlt="Wrak helikoptera widzianego pod wodą"
+>
+  Wrak helikoptera Sea King to niezwykła atrakcja nurkowa w okolicach Cabo de Palos. Spoczywa na stosunkowo niewielkiej głębokości, co czyni go dostępnym również dla mniej zaawansowanych nurków. Kadłub śmigłowca stanowi dziś sztuczną rafę, zamieszkaną przez liczne ryby i bezkręgowce. To rzadko spotykany typ wraku w Morzu Śródziemnym, który robi ogromne wrażenie i daje możliwość wyjątkowych zdjęć podwodnych.
+</TwoColumnSection>

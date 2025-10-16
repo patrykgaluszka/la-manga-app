@@ -1,0 +1,575 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Słowniczek
+---
+
+import SectionsMenu from '../components/SectionsMenu.tsx';
+import GlossarySection from '../components/GlossarySection.tsx';
+
+export const glossaryData = [
+  {
+    "section": "Podstawowe zwroty",
+    "id": "podstawowe-zwroty",
+    "items": [
+      {
+        "phrase": "Dzień dobry",
+        "translation": "Buenos días",
+        "pronunciation": "bwe-nos dijas"
+      },
+      {
+        "phrase": "Dobry wieczór",
+        "translation": "Buenas noches",
+        "pronunciation": "bwe-nas noczes"
+      },
+      {
+        "phrase": "Cześć / Witaj",
+        "translation": "Hola",
+        "pronunciation": "o-la"
+      },
+      {
+        "phrase": "Do widzenia",
+        "translation": "Adiós",
+        "pronunciation": "a-djos"
+      },
+      {
+        "phrase": "Dziękuję",
+        "translation": "Gracias",
+        "pronunciation": "gra-thjas / gra-sjas"
+      },
+      {
+        "phrase": "Proszę (podając coś)",
+        "translation": "Aquí tienes",
+        "pronunciation": "a-ki tje-nes"
+      },
+      {
+        "phrase": "Proszę (forma grzecznościowa)",
+        "translation": "Por favor",
+        "pronunciation": "por fa-bor"
+      },
+      {
+        "phrase": "Przepraszam",
+        "translation": "Perdón",
+        "pronunciation": "per-don"
+      },
+      {
+        "phrase": "Nie ma za co",
+        "translation": "De nada",
+        "pronunciation": "de na-da"
+      },
+      {
+        "phrase": "Jak się masz?",
+        "translation": "¿Cómo estás?",
+        "pronunciation": "ko-mo es-tas"
+      },
+      {
+        "phrase": "Dobrze, dziękuję",
+        "translation": "Bien, gracias",
+        "pronunciation": "bjen gra-thjas / gra-sjas"
+      },
+      {
+        "phrase": "Nie rozumiem",
+        "translation": "No entiendo",
+        "pronunciation": "no en-tjen-do"
+      },
+      {
+        "phrase": "Czy mówisz po angielsku?",
+        "translation": "¿Hablas inglés?",
+        "pronunciation": "a-blas in-gles"
+      },
+      {
+        "phrase": "Tak",
+        "translation": "Sí",
+        "pronunciation": "si"
+      },
+      {
+        "phrase": "Nie",
+        "translation": "No",
+        "pronunciation": "no"
+      },
+      {
+        "phrase": "Ile to kosztuje?",
+        "translation": "¿Cuánto cuesta?",
+        "pronunciation": "kwan-to kwes-ta"
+      },
+      {
+        "phrase": "Gdzie jest toaleta?",
+        "translation": "¿Dónde está el baño?",
+        "pronunciation": "don-de es-ta el ba-njo"
+      }
+    ]
+  },
+  {
+  "section": "W restauracji",
+  "id": "w-restauracji",
+  "items": [
+      {
+        "phrase": "Poproszę wodę",
+        "translation": "Agua, por favor",
+        "pronunciation": "a-gwa por fa-vor"
+      },
+      {
+        "phrase": "Rachunek, proszę",
+        "translation": "La cuenta, por favor",
+        "pronunciation": "la kłen-ta por fa-vor"
+      },
+      {
+        "phrase": "Czy mogę prosić menu?",
+        "translation": "¿Me puede dar el menú?",
+        "pronunciation": "me pwe-de dar el me-nu"
+      },
+      {
+        "phrase": "Czy macie dania wegetariańskie?",
+        "translation": "¿Tiene platos vegetarianos?",
+        "pronunciation": "tje-ne pla-tos we-he-ta-rja-nos"
+      },
+      {
+        "phrase": "Czy macie dania bezglutenowe?",
+        "translation": "¿Tiene platos sin gluten?",
+        "pronunciation": "tje-ne pla-tos sin glu-ten"
+      },
+      {
+        "phrase": "Polecacie coś specjalnego?",
+        "translation": "¿Me recomienda algo especial?",
+        "pronunciation": "me re-ko-mjen-da al-go es-pe-sjal"
+      },
+      {
+        "phrase": "Chciałbym zamówić to danie",
+        "translation": "Quisiera pedir este plato",
+        "pronunciation": "ki-sje-ra pe-dir es-te pla-to"
+      },
+      {
+        "phrase": "Czy mogę zapłacić kartą?",
+        "translation": "¿Puedo pagar con tarjeta?",
+        "pronunciation": "pwe-do pa-gar kon tar-he-ta"
+      },
+      {
+        "phrase": "Czy macie stolik dla dwóch osób?",
+        "translation": "¿Tiene una mesa para dos personas?",
+        "pronunciation": "tje-ne u-na me-sa pa-ra dos per-so-nas"
+      },
+      {
+          "phrase": "Poproszę piwo",
+    "translation": "Una cerveza, por favor",
+    "pronunciation": "u-na ser-we-sa por fa-vor"
+  },
+  {
+    "phrase": "lampkę wina",
+    "translation": "Una copa de vino",
+    "pronunciation": "u-na ko-pa"
+  },
+  {
+    "phrase": "Poproszę kawę z mlekiem",
+    "translation": "Un café con leche",
+    "pronunciation": "un ka-fe kon le-cze"
+  },
+  {
+    "phrase": "Poproszę sok pomarańczowy",
+    "translation": "Un zumo de naranja",
+    "pronunciation": "un su-mo de na-ran-cha"
+  },
+  {
+    "phrase": "Drób",
+    "translation": "Ave",
+    "pronunciation": "a-be"
+  },
+  {
+    "phrase": "Kurczak",
+    "translation": "Pollo",
+    "pronunciation": "po-jo"
+  },
+  {
+    "phrase": "Wołowina",
+    "translation": "Carne de vaca / Ternera",
+    "pronunciation": "kar-ne de wa-ka / ter-ne-ra"
+  },
+  {
+    "phrase": "Wieprzowina",
+    "translation": "Cerdo",
+    "pronunciation": "ther-do / ser-do"
+  },
+  {
+    "phrase": "Królik",
+    "translation": "Conejo",
+    "pronunciation": "ko-ne-ho"
+  },
+  {
+    "phrase": "Jagnięcina",
+    "translation": "Cordero",
+    "pronunciation": "kor-de-ro"
+  },
+  {
+    "phrase": "Baranina",
+    "translation": "Carne de oveja",
+    "pronunciation": "kar-ne de o-we-ha"
+  },
+  {
+    "phrase": "Indyk",
+    "translation": "Pavo",
+    "pronunciation": "pa-wo"
+  },
+  {
+    "phrase": "Kaczka",
+    "translation": "Pato",
+    "pronunciation": "pa-to"
+  },
+  {
+    "phrase": "Gęsina",
+    "translation": "Ganso",
+    "pronunciation": "gan-so"
+  },
+      {
+        "phrase": "Ośmiornica",
+        "translation": "Pulpo",
+        "pronunciation": "pul-po"
+      },
+      {
+        "phrase": "Tuńczyk",
+        "translation": "Atún",
+        "pronunciation": "a-tun"
+      },
+      {
+        "phrase": "Łosoś",
+        "translation": "Salmón",
+        "pronunciation": "sal-mon"
+      },
+      {
+        "phrase": "Kalmary",
+        "translation": "Calamares",
+        "pronunciation": "ka-la-ma-res"
+      },
+      {
+        "phrase": "Kałamarniczki",
+        "translation": "Chopitos",
+        "pronunciation": "czo-pi-tos"
+      },
+      {
+        "phrase": "Sardynki",
+        "translation": "Sardinas",
+        "pronunciation": "sar-di-nas"
+      },
+      {
+        "phrase": "Małże",
+        "translation": "Almejas",
+        "pronunciation": "al-me-chas"
+      },
+      {
+        "phrase": "Krewetki",
+        "translation": "Gambas",
+        "pronunciation": "gam-bas"
+      },
+      {
+        "phrase": "Ostrygi",
+        "translation": "Ostras",
+        "pronunciation": "os-tras"
+      },
+      {
+        "phrase": "Bocznołupki / przegrzebki",
+        "translation": "Zamburiñas",
+        "pronunciation": "zam-bu-ri-njas"
+      },
+      {
+        "phrase": "Kraby rzeczne / rak",
+        "translation": "Cigalas",
+        "pronunciation": "si-ga-las"
+      },
+      {
+        "phrase": "Langustynki",
+        "translation": "Langostinos",
+        "pronunciation": "lan-gos-ti-nos"
+      },
+      {
+        "phrase": "Homar",
+        "translation": "Bogavante",
+        "pronunciation": "bo-ga-ban-te"
+      },
+      {
+        "phrase": "Kawior",
+        "translation": "Caviar",
+        "pronunciation": "ka-bjar"
+      },
+      {
+        "phrase": "Lody",
+        "translation": "Helado",
+        "pronunciation": "e-la-do"
+      },
+      {
+        "phrase": "Ciasto",
+        "translation": "Pastel",
+        "pronunciation": "pas-tel"
+      }
+    ]
+  },
+  {
+    "section": "W aptece",
+    "id": "w-aptece",
+    "items": [
+      {
+        "phrase": "Apteka",
+        "translation": "Farmacia",
+        "pronunciation": "far-ma-thja / far-ma-sja"
+      },
+      {
+        "phrase": "Lek",
+        "translation": "Medicina",
+        "pronunciation": "me-di-thi-na / me-di-si-na"
+      },
+      {
+        "phrase": "Tabletka",
+        "translation": "Pastilla",
+        "pronunciation": "pas-ti-ja"
+      },
+      {
+        "phrase": "Syrop",
+        "translation": "Jarabe",
+        "pronunciation": "ha-ra-be"
+      },
+      {
+        "phrase": "Maść",
+        "translation": "Pomada",
+        "pronunciation": "po-ma-da"
+      },
+      {
+        "phrase": "Ból głowy",
+        "translation": "Dolor de cabeza",
+        "pronunciation": "do-lor de ka-be-tha / ka-be-sa"
+      },
+      {
+        "phrase": "Ból brzucha",
+        "translation": "Dolor de estómago",
+        "pronunciation": "do-lor de es-to-ma-go"
+      },
+      {
+        "phrase": "Ból gardła",
+        "translation": "Dolor de garganta",
+        "pronunciation": "do-lor de gar-gan-ta"
+      },
+      {
+        "phrase": "Gorączka",
+        "translation": "Fiebre",
+        "pronunciation": "fje-bre"
+      },
+      {
+        "phrase": "Przeziębienie",
+        "translation": "Resfriado",
+        "pronunciation": "res-frja-do"
+      },
+      {
+        "phrase": "Antybiotyk",
+        "translation": "Antibiótico",
+        "pronunciation": "an-ti-bjo-ti-ko"
+      },
+      {
+        "phrase": "Środek przeciwbólowy",
+        "translation": "Analgésico",
+        "pronunciation": "a-nal-he-si-ko"
+      },
+      {
+        "phrase": "Środek przeciwgorączkowy",
+        "translation": "Antitérmico",
+        "pronunciation": "an-ti-ter-mi-ko"
+      },
+      {
+        "phrase": "Ból brzucha",
+        "translation": "Dolor de barriga",
+        "pronunciation": "do-lor de ba-ri-ga"
+      },
+      {
+        "phrase": "Ból żołądka",
+        "translation": "Dolor de estómago",
+        "pronunciation": "do-lor de es-to-ma-go"
+      },
+      {
+        "phrase": "Lek rozkurczowy",
+        "translation": "Medicamento antiespasmódico",
+        "pronunciation": "me-di-ka-men-to an-ti-es-pas-mo-di-ko"
+      },
+      {
+        "phrase": "Miesiączka",
+        "translation": "Menstruación",
+        "pronunciation": "mens-trua-thjon / mens-trua-sjon"
+      },
+      {
+        "phrase": "Czy macie coś na ból głowy?",
+        "translation": "¿Tiene algo para el dolor de cabeza?",
+        "pronunciation": "tje-ne al-go pa-ra el do-lor de ka-be-tha / ka-be-sa"
+      },
+      {
+        "phrase": "Czy macie coś na przeziębienie?",
+        "translation": "¿Tiene algo para el resfriado?",
+        "pronunciation": "tje-ne al-go pa-ra el res-frja-do"
+      }
+    ]
+  },
+  {
+    "section": "Liczby",
+    "id": "liczby",
+    "items": [
+      {
+        "phrase": "Jeden",
+        "translation": "Uno",
+        "pronunciation": "u-no"
+      },
+      {
+        "phrase": "Dwa",
+        "translation": "Dos",
+        "pronunciation": "dos"
+      },
+      {
+        "phrase": "Trzy",
+        "translation": "Tres",
+        "pronunciation": "tres"
+      },
+      {
+        "phrase": "Cztery",
+        "translation": "Cuatro",
+        "pronunciation": "kwa-tro"
+      },
+      {
+        "phrase": "Pięć",
+        "translation": "Cinco",
+        "pronunciation": "thin-ko / sin-ko"
+      },
+      {
+        "phrase": "Sześć",
+        "translation": "Seis",
+        "pronunciation": "sejs"
+      },
+      {
+        "phrase": "Siedem",
+        "translation": "Siete",
+        "pronunciation": "sie-te"
+      },
+      {
+        "phrase": "Osiem",
+        "translation": "Ocho",
+        "pronunciation": "o-czo"
+      },
+      {
+        "phrase": "Dziewięć",
+        "translation": "Nueve",
+        "pronunciation": "nue-we"
+      },
+      {
+        "phrase": "Dziesięć",
+        "translation": "Diez",
+        "pronunciation": "djeth / diez"
+      },
+      {
+        "phrase": "Jedenaście",
+        "translation": "Once",
+        "pronunciation": "on-se"
+      },
+      {
+        "phrase": "Dwanaście",
+        "translation": "Doce",
+        "pronunciation": "do-se"
+      },
+      {
+        "phrase": "Trzynaście",
+        "translation": "Trece",
+        "pronunciation": "tre-se"
+      },
+      {
+        "phrase": "Czternaście",
+        "translation": "Catorce",
+        "pronunciation": "ka-tor-se"
+      },
+      {
+        "phrase": "Piętnaście",
+        "translation": "Quince",
+        "pronunciation": "kin-se"
+      },
+      {
+        "phrase": "Szesnaście",
+        "translation": "Dieciséis",
+        "pronunciation": "dje-thi-sejs / dje-si-sejs"
+      },
+      {
+        "phrase": "Siedemnaście",
+        "translation": "Diecisiete",
+        "pronunciation": "dje-thi-sie-te / dje-si-sie-te"
+      },
+      {
+        "phrase": "Osiemnaście",
+        "translation": "Dieciocho",
+        "pronunciation": "dje-thi-o-czo / dje-si-o-czo"
+      },
+      {
+        "phrase": "Dziewiętnaście",
+        "translation": "Diecinueve",
+        "pronunciation": "dje-thi-nue-we / dje-si-nue-we"
+      },
+      {
+        "phrase": "Dwadzieścia",
+        "translation": "Veinte",
+        "pronunciation": "bein-te"
+      },
+      {
+        "phrase": "Dwadzieścia jeden",
+        "translation": "Veintiuno",
+        "pronunciation": "bein-ti-u-no"
+      },
+      {
+        "phrase": "Dwadzieścia dwa",
+        "translation": "Veintidós",
+        "pronunciation": "bein-ti-dos"
+      },
+      {
+        "phrase": "Dwadzieścia trzy",
+        "translation": "Veintitrés",
+        "pronunciation": "bein-ti-tres"
+      },
+      {
+        "phrase": "Dwadzieścia pięć",
+        "translation": "Veinticinco",
+        "pronunciation": "bein-ti-thin-ko / bein-ti-sin-ko"
+      },
+      {
+        "phrase": "Trzydzieści",
+        "translation": "Treinta",
+        "pronunciation": "trejn-ta"
+      },
+      {
+        "phrase": "Czterdzieści",
+        "translation": "Cuarenta",
+        "pronunciation": "kwa-ren-ta"
+      },
+      {
+        "phrase": "Pięćdziesiąt",
+        "translation": "Cincuenta",
+        "pronunciation": "thin-kuen-ta / sin-kuen-ta"
+      },
+      {
+        "phrase": "Sześćdziesiąt",
+        "translation": "Sesenta",
+        "pronunciation": "se-sen-ta"
+      },
+      {
+        "phrase": "Siedemdziesiąt",
+        "translation": "Setenta",
+        "pronunciation": "se-ten-ta"
+      },
+      {
+        "phrase": "Osiemdziesiąt",
+        "translation": "Ochenta",
+        "pronunciation": "o-czen-ta"
+      },
+      {
+        "phrase": "Dziewięćdziesiąt",
+        "translation": "Noventa",
+        "pronunciation": "no-wen-ta"
+      },
+      {
+        "phrase": "Sto",
+        "translation": "Cien",
+        "pronunciation": "thjen / sjen"
+      }
+    ]
+  }
+];
+
+# Słowniczek
+
+<SectionsMenu sections={glossaryData} client:load />
+
+<GlossarySection sections={glossaryData} />

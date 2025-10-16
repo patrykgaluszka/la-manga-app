@@ -1,0 +1,39 @@
+---
+export interface Props {
+  polish: string;
+  translation: string;
+  pronunciation?: string;
+  category?: string;
+}
+
+const { polish, translation, pronunciation, category } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 p-4 mb-3 border border-gray-100">
+  {category && (
+    <div class="mb-2">
+      <span class="inline-block bg-ocean-100 text-ocean-800 text-xs font-medium px-2 py-1 rounded-full">
+        {category}
+      </span>
+    </div>
+  )}
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+    <div class="text-left">
+      <div class="font-semibold text-gray-800 text-lg mb-1">
+        {polish}
+      </div>
+      {pronunciation && (
+        <div class="text-sm text-gray-500 italic">
+          [{pronunciation}]
+        </div>
+      )}
+    </div>
+    
+    <div class="text-left sm:text-right">
+      <div class="text-ocean-700 font-medium text-lg">
+        {translation}
+      </div>
+    </div>
+  </div>
+</div>

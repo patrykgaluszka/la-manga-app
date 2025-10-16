@@ -1,0 +1,81 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Checklista
+---
+
+import Checklist from '../components/Checklist.tsx';
+
+export const categories = [
+  {
+    name: "dokumenty i $$$",
+    items: [
+      { name: "dowód osobisty / paszport", checked: false },
+      { name: "prawo jazdy (opcjonalnie)", checked: false },
+      { name: "ubezpieczenie nurkowe", checked: false },
+      { name: "certyfikaty nurkowe i logbook", checked: false },
+      { name: "gotówka na swoje potrzeby, bilon", checked: false },
+      { name: "karta kredytowa, karta walutowa", checked: false },
+    ]
+  },
+  {
+    name: "elektronika",
+    items: [
+      { name: "ładowarka do latarek, komputera", checked: false },
+      { name: "ładowarka do telefonu", checked: false },
+    ]
+  },
+  {
+    name: "nurkowanie",
+    items: [
+      { name: "maska, fajka i płetwy", checked: false },
+      { name: "pianka, kaptur, buty, rękawice", checked: false },
+      { name: "KRW lub skrzydło", checked: false },
+      { name: "pas balastowy / kieszenie", checked: false },
+      { name: "automat", checked: false },
+      { name: "komputer, latarka", checked: false },
+      { name: "boja (opcjonalnie)", checked: false },
+      { name: "kąpielówki", checked: false },
+      { name: "klapki", checked: false },
+      { name: "ręcznik", checked: false },
+      { name: "czapka", checked: false },
+    ]
+  },
+  {
+    name: "ubrania",
+    items: [
+      { name: "bielizna", checked: false },
+      { name: "lekkie ciuchy (t-shirt, sukienki)", checked: false },
+      { name: "bluza i bielizna termoaktywna", checked: false },
+      { name: "cienka kurtka przeciwdeszczowa", checked: false }
+    ]
+  },
+  {
+    name: "zdrowie",
+    items: [
+      { name: "filtr SPF 50", checked: false },
+      { name: "krem nawilżający, panthenol", checked: false },
+      { name: "przeciwbólowe, węgiel, nospa", checked: false },
+      { name: "okulary przeciwsłoneczne", checked: false },
+      { name: "soczewki (jak ktoś nosi)", checked: false },
+      { name: "czapka z daszkiem", checked: false }
+    ]
+  },
+  {
+    name: "praktyczne",
+    items: [
+      { name: "kapsułka do prania", checked: false },
+      { name: "notes i długopis", checked: false },
+      { name: "książka", checked: false },
+      { name: "worek wodoodporny", checked: false },
+      { name: "butelka na wodę (reużywalna)", checked: false },
+      { name: "garść spinaczy", checked: false },
+      { name: "woreczek śniadaniowe lub pojemnik", checked: false }
+    ]
+  }
+];
+
+# Checklista
+
+<Checklist categories={categories} client:load />
+
+

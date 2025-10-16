@@ -1,0 +1,203 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Jedzenie
+---
+
+import Tile from '../components/Tile.astro';
+import Part from '../components/Part.astro';
+import SectionsMenu from '../components/SectionsMenu.tsx';
+import DishTile from '../components/DishTile.astro';
+import DishesSearch from '../components/DishesSearch.tsx';
+
+import calderoDelMarMenorImg from "../assets/food/caldero-del-mar-menor.png"
+import zarangolloImg from "../assets/food/zarangollo.jpg"
+import pistoMurcianoImg from "../assets/food/pisto-murciano.jpg"
+import michironesImg from "../assets/food/michirones.webp"
+import paellaMurcianaImg from "../assets/food/paella-murciana.jpg"
+import migasImg from "../assets/food/migas.jpg"
+import paparajoteImg from "../assets/food/paparajote.jpg"
+import panDeCalatravaImg from "../assets/food/pan-de-calatrava.jpg"
+import marineraImg from "../assets/food/marinera.jpg"
+import ensaladaMurcianaImg from "../assets/food/ensalada-murciana.jpg"
+import caballitosImg from "../assets/food/caballitos.jpg"
+import pastelDeCarneImg from "../assets/food/pastel-de-carne.jpg"
+import roeMojamaImg from "../assets/food/roe-mojama.jpg"
+import paellaImg from "../assets/food/paella.jpg"
+import gazpachoImg from "../assets/food/gazpacho.webp"
+import tortillaEspanolaImg from "../assets/food/tortilla-espanola.jpeg"
+import pulpoALaGallegaImg from "../assets/food/pulpo-a-la-gallega.jpg"
+import jamonSerranoImg from "../assets/food/jamon-serrano.jpg"
+import croquetasImg from "../assets/food/croquetas.jpg"
+import patatasBravasImg from "../assets/food/patatas-bravas.jpg"
+import churrosConChocolateImg from "../assets/food/churros-con-chocolate.jpeg"
+import empanadasImg from "../assets/food/empanadas.webp"
+import pimientosDePadrónImg from "../assets/food/pimientos-de-padron.jpg"
+import ensaladaRusaImg from "../assets/food/ensalada-rusa.webp"
+
+export const dishes = [
+  {
+    "title": "Caldero del Mar Menor",
+    "desc": "Caldero to tradycyjne danie kuchni regionu Mar Menor w Hiszpanii, którego głównymi składnikami są ryż i ryby (takie jak cefal, żabnica, lucjan) gotowane w żeliwnym kotle, z dodatkiem papryki i majonezu czosnkowego. To danie rybackie wywodzi się z miejscowości Cabo de Palos i charakteryzuje się skoncentrowanym bulionem rybnym, który nadaje mu bogaty smak.",
+    "imageSrc": calderoDelMarMenorImg.src
+  },
+  {
+    "title": "Zarangollo",
+    "desc": "Prosta, ale pełna smaku tapa. Cukinie i cebule (czasem także bakłażany lub ziemniaki) są podsmażane na oliwie z oliwek, a następnie mieszane z jajkami do uzyskania kremowej konsystencji. Podawane na chlebie lub grzance i jedzone na ciepło.",
+    "imageSrc": zarangolloImg.src
+  },
+  {
+    "title": "Pisto Murciano",
+    "desc": "Często opisywane jako murcjańska wersja ratatouille. Danie łączy pomidory, papryki, cebule i bakłażany. Każde warzywo jest smażone oddzielnie, a następnie całość duszona do zgęstnienia. Pisto podaje się na ciepło lub na zimno, często ozdobione plastrami jajka na twardo.",
+    "imageSrc": pistoMurcianoImg.src
+  },
+  {
+    "title": "Michirones",
+    "desc": "Treściwy gulasz z suszonego bobu, gotowanego z chorizo, boczkiem, szynką, a czasem ziemniakami. Doprawiany czosnkiem, liściem laurowym i chilli, co nadaje mu dymny, rozgrzewający charakter.",
+    "imageSrc": michironesImg.src
+  },
+  {
+    "title": "Paella Murciana",
+    "desc": "W przeciwieństwie do paelli z owocami morza kojarzonej z Walencją, murcjańska paella koncentruje się na warzywach, takich jak karczochy, papryki, szparagi, bób i pomidory. Dodaje się niewielką ilość chudej wieprzowiny lub królika oraz szczyptę szafranu do smaku.",
+    "imageSrc": paellaMurcianaImg.src
+  },
+  {
+    "title": "Migas",
+    "desc": "Wiejskie i tradycyjnie danie, przygotowywane w deszczowe dni, gdy brak świeżej dostawy ryb. Czerstwy chleb zwilża się wodą, a następnie smaży na oliwie z oliwek z czosnkiem i kawałkami kiełbasy lub boczku, aż stanie się chrupiący i złoty.",
+    "imageSrc": migasImg.src
+  },
+  {
+    "title": "Paparajote",
+    "desc": "Na deser Murcianie często jedzą paparajote. Liście cytrynowe zanurza się w prostym cieście i smaży na głębokim oleju, a następnie posypuje cukrem i cynamonem. Zjada się tylko ciasto – liść służy jako aromat.",
+    "imageSrc": paparajoteImg.src
+  },
+  {
+    "title": "Pan de Calatrava",
+    "desc": "Kolejnym typowym deserem jest Pan de Calatrava, pudding zrobiony z resztek chleba lub biszkoptu namoczonych w mleku z jajkami i cukrem. Pieczony w formie wyłożonej karmelem, daje deser podobny do flanu.",
+    "imageSrc": panDeCalatravaImg.src
+  },
+  {
+    "title": "Marinera",
+    "desc": "Paluszek chlebowy z sałatką jarzynową, z tuńczykiem i ziemniakami, zwieńczony soloną sardelą (anchoas).",
+    "imageSrc": marineraImg.src
+  },
+  {
+    "title": "Ensalada murciana",
+    "desc": "Sałatka z pomidorów, tuńczyka, cebuli, jajka na twardo i oliwek, skropiona oliwą.",
+    "imageSrc": ensaladaMurcianaImg.src
+  },
+  {
+    "title": "Caballitos",
+    "desc": "Krewetki w lekkim cieście, smażone na złoto i podawane z cytryną.",
+    "imageSrc": caballitosImg.src
+  },
+  {
+    "title": "Pastel de carne",
+    "desc": "Ciasto francuskie nadziewane cielęciną, chorizo, szynką, papryką i jajkiem na twardo.",
+    "imageSrc": pastelDeCarneImg.src
+  },
+  {
+    "title": "Roe & mojama",
+    "desc": "Plastry solonej ikry tuńczyka i suszonego tuńczyka, często podawane ze smażonymi migdałami.",
+    "imageSrc": roeMojamaImg.src
+  },
+  {
+    "title": "Paella",
+    "desc": "Danie bazujące na ryżu, pochodzące z Walencji, lecz popularne na całym zachodnim wybrzeżu. Może występować w wersjach z owocami morza, mięsem lub warzywami, najczęściej serwowana jako niedzielne danie dla minimum dwóch osób, często wymaga zamówienia dzień wcześniej.",
+    "imageSrc": paellaImg.src
+  },
+  {
+    "title": "Gazpacho",
+    "desc": "Chłodnik pomidorowy, pochodzący z Andaluzji, lecz popularny w całym kraju. Świeże pomidory dają słodycz, a zielony ogórek ożeźwia w upalne dni na plaży. Kupicie go także w supermarketach tak jak u nas można kupić soczek jednodniowy :)",
+    "imageSrc": gazpachoImg.src
+  },
+  {
+    "title": "Tortilla Española",
+    "desc": "Hiszpański omlet z ziemniakami i cebulą, w hotelach serwowany na śniadanie, hiszpanie jedzą go raczej na obiad lub kolację. Często podawany jako przekąska (tapa) w formie jednego trójkącika.",
+    "imageSrc": tortillaEspanolaImg.src
+  },
+  {
+    "title": "Pulpo a la gallega",
+    "desc": "Ośmiornica po galicyjsku z papryką i oliwą.",
+    "imageSrc": pulpoALaGallegaImg.src
+  },
+  {
+    "title": "Jamon serrano",
+    "desc": "Dojrzewająca szynka wieprzowa o intensywnym smaku.",
+    "imageSrc": jamonSerranoImg.src
+  },
+  {
+    "title": "Croquetas",
+    "desc": "Maleńkie kotleciki z beszamelu z dodatkami (ser, warzywa, mięso bądź ryba), panierowane i smażone na głębokim oleju.",
+    "imageSrc": croquetasImg.src
+  },
+  {
+    "title": "Patatas bravas",
+    "desc": "Odważne ziemniaki powinny być smażone i pieczone do chrupkości. Krojone z reguły w kostkę lub talarki, jednak każda restauracja ma własną recepturę, a w typowej pułapce turystycznej możemy otrzymać zwykłe frytki. Podawane z pikantnym sosem pomidorowym (salsa brava).",
+    "imageSrc": patatasBravasImg.src
+  },
+  {
+    "title": "Churros con chocolate",
+    "desc": "Smażone paluszki z ciasta pączkowego możecie znać z festynów. Podawane z gorącą czekoladą do picia lub maczania, poza ciepłym zachodem podawane głównie zimą.",
+    "imageSrc": churrosConChocolateImg.src
+  },
+  {
+    "title": "Empanadas",
+    "desc": "Smażone pierożki nadziewane mięsem, tuńczykiem lub warzywami.",
+    "imageSrc": empanadasImg.src
+  },
+  {
+    "title": "Pimientos de padrón",
+    "desc": "Smażone zielone papryczki posypane gruboziarnistą solą, z reguły stanowią łagodną przekąskę do piwa, ale możemy trafić na bardzo pikantną odmianę.",
+    "imageSrc": pimientosDePadrónImg.src
+  },
+  {
+    "title": "Ensalada rusa",
+    "desc": "Sałatka jarzynowa jak z wielkanocnego stołu, ale inna. Jajka na twardo, cebula, groszek, czasem ogórki konserwowe, czasem oliwki i zawsze majonez.",
+    "imageSrc": ensaladaRusaImg.src
+  }
+];
+
+
+# Jedzenie
+
+<SectionsMenu client:load />
+
+<DishesSearch dishes={dishes} client:load />
+
+<Part>
+## Rodzaje knajp
+Gastronomia w Hiszpanii to nie tylko jedzenie, ale styl życia – społeczny rytuał spotkań, dzielenia się i celebrowania chwil przy stole. Dni wyznaczają konkretne pory posiłków: lekkie śniadanie (desayuno), obfity obiad w środku dnia (comida), wieczorne tapas lub kolacja (cena), często późno — po 21:00. Popularne są lokale wyspecjalizowane: bary tapas, bodegi z winem, marisquerías z owocami morza czy asadores z pieczonym mięsem.
+
+- **Bar de tapas** – lokal z przekąskami podawanymi do napojów
+- **Cervecería** – bar specjalizujący się w piwie i prostych przekąskach
+- **Bodega** – tradycyjny lokal z winem i typową kuchnią regionalną
+- **Chiringuito** – bar przy plaży, serwujący owoce morza i napoje
+- **Mesón** – tradycyjna gospoda z daniami kuchni domowej
+- **Restaurante** – pełnoprawna restauracja z kartą dań
+- **Cafetería** – kawiarnia z kawą, śniadaniami, drobnymi daniami
+- **Marisquería** – lokal specjalizujący się w owocach morza
+- **Asador** – restauracja grillowa, często z jagnięciną lub wieprzowiną
+</Part>
+
+<Part>
+## Tapa vs ración
+- **Tapa**: mała porcja “na spróbowanie” lub do kieliszka wina/piwa. Często służy do degustowania wielu smaków, idealna do dzielenia się. W niektórych regionach (np. Granada) prosta tapa bywa podawana gratis do napoju.
+- **Ración**: większa porcja tego samego dania, przeznaczona do dzielenia na 2–3 osoby lub jako solidniejszy posiłek. Jest wyraźnie droższa, ale ekonomiczna przy wspólnym zamawianiu.
+- **Media ración**: porcja pośrednia, jeśli jest w karcie.
+- Praktycznie: jeśli chcesz spróbować wielu dań – zamawiaj tapas. Jeśli chcesz się najeść lub dzielić jednym daniem – weź ración.
+</Part>
+
+<Part>
+## Godziny i “siesta”
+- **Przerwa w środku dnia**: wiele lokali zamyka kuchnię między ok. 16:00 a 19:30–20:00. To potocznie nazywa się “siestą”, choć dziś częściej chodzi o przerwę operacyjną między serwisami.
+- **Godziny posiłków**: comida (obiad) zwykle 13:30–16:00, cena (kolacja) od 20:30/21:00 do późna. Bary tapas działają elastyczniej, ale kuchnia też bywa zamknięta w przerwie.
+- **Menú del día**: w dni robocze w porze obiadu – zestaw w dobrej cenie (zwykle przystawka, danie główne, deser/napój/chleb).
+- **Rezerwacje**: w popularnych miejscach na kolację warto rezerwować miejsce. Na tapas często staje się przy barze.
+- **Obsługa i rachunek**: napiwki nie są obowiązkowe, ale zostawienie drobnych (5–10%) w turystycznych miastach jest mile widziane. Często doliczany jest chleb lub oliwki (pan/servicio). Prosząc o rachunek, mówimy “la cuenta, por favor”.
+- **Kultura stołu**: dzielenie się talerzami jest normą. Dania zwykle trafiają na środek. Długi “sobremesa” (rozmowy po posiłku) jest częścią doświadczenia – nikt nie pośpiesza.
+</Part>
+
+<Part>
+## Kuchnia Murcji
+Kuchnia regionu Murcja w południowo-wschodniej Hiszpanii jest silnie ukształtowana przez klimat śródziemnomorski i żyzne *huerta* (ogrody warzywne). Lokalni kucharze wykorzystują obfitość warzyw – pomidory, papryki, bakłażany i cukinie – wraz z ryżem, szafranem, oliwą z oliwek i owocami morza z Mar Menor. Wiele przepisów ma korzenie mauretańskie, łącząc suszone papryki (ñoras), cytrusy i aromatyczne zioła. Rezultatem jest repertuar gulaszy, wytrawnych placków i lekkich tapas, które podkreślają świeżość lokalnych składników.
+</Part>

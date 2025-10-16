@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Tile from '../components/Tile.astro';
+import AnchorButton from '../components/AnchorButton.astro';
+---
+
+<BaseLayout title="Trip Itinerary - Home" description="Your complete travel guide for an amazing tropical adventure">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">
+      Ahoj! 🌴
+    </h1>
+    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+      Sprawdź co znajdziesz w aplikacji
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">📅</span>
+        Plan Wycieczki
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Szczegółowy 8-dniowy plan z opisem każdego dnia, atrakcjami i praktycznymi informacjami.
+      </p>
+      <AnchorButton href="/plan-wycieczki">
+        Zobacz plan →
+      </AnchorButton>
+    </Tile>
+
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">✈️</span>
+        Lot i Bagaż
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Wszystkie informacje o lotach, bagażu i formalności związanych z podróżą.
+      </p>
+      <AnchorButton href="/lot-i-bagaz">
+        Sprawdź szczegóły →
+      </AnchorButton>
+    </Tile>
+
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">🤿</span>
+        Nurkowanie
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Opisy miejsc nurkowych, filmy, oraz lista stworzeń które możemy spotkać pod wodą.
+      </p>
+      <AnchorButton href="/nurkowanie">
+        Odkryj podwodny świat →
+      </AnchorButton>
+    </Tile>
+
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">📖</span>
+        Słowniczek
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Przydatne zwroty i słówka, które pomogą Ci w komunikacji podczas podróży.
+      </p>
+      <AnchorButton href="/slowniczek">
+        Naucz się podstaw →
+      </AnchorButton>
+    </Tile>
+
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">🍽️</span>
+        Jedzenie
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Regionalne dania Murcji, opisy i szybkie wyszukiwanie potraw.
+      </p>
+      <AnchorButton href="/jedzenie">
+        Zobacz dania →
+      </AnchorButton>
+    </Tile>
+
+    <Tile>
+      <h2 class="text-2xl font-bold text-ocean-600 mb-3 flex items-center">
+        <span class="mr-2">🧳</span>
+        Checklista
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Lista rzeczy do spakowania z kategoriami i zapisem postępu.
+      </p>
+      <AnchorButton href="/checklista">
+        Otwórz checklistę →
+      </AnchorButton>
+    </Tile>
+  </div>
+</BaseLayout>

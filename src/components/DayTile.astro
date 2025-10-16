@@ -1,0 +1,48 @@
+---
+export interface Props {
+  day: number;
+  title: string;
+  date: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { day, title, date, image, imageAlt = `Day ${day} activity` } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 p-6 mb-6 border border-gray-100">
+  <header class="mb-4 pb-3 border-b border-gray-200">
+    <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+      <span class="bg-ocean-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">
+        {day}
+      </span>
+      {date} – {title}
+    </h2>
+  </header>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+    <div class="order-2 md:order-1">
+      {image ? (
+        <img 
+          src={image} 
+          alt={imageAlt}
+          class="w-full h-48 object-cover rounded-lg shadow-sm"
+          loading="lazy"
+        />
+      ) : (
+        <div class="w-full h-48 bg-gradient-to-br from-ocean-100 to-ocean-200 rounded-lg flex items-center justify-center text-ocean-600">
+          <div class="text-center">
+            <span class="text-4xl mb-2 block">📸</span>
+            <span class="text-sm font-medium">Zdjęcie dnia {day}</span>
+          </div>
+        </div>
+      )}
+    </div>
+    
+    <div class="order-1 md:order-2">
+      <div class="prose prose-gray max-w-none">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Lot i Bagaż
+---
+
+import Tile from '../components/Tile.astro';
+import Part from '../components/Part.astro';
+import Flight from '../components/Flight.astro';
+import TwoColumnSection from '../components/TwoColumnSection.astro';
+import luggagesImg from '../assets/luggages.png';
+
+# Lot i Bagaż
+
+<Tile>
+## Informacje o locie
+
+<Flight 
+  from="Warszawa Chopin"
+  to="Alicante"
+  date="18.10.2025"
+  departure="09:55"
+  arrival="13:30"
+  operator="Ryanair"
+  flightNumber="FR6073"
+/>
+
+<Flight 
+  from="Alicante"
+  to="Warszawa Chopin"
+  date="25.10.2025"
+  departure="12:05"
+  arrival="15:40"
+  operator="Wizzair"
+  flightNumber="W61488"
+/>
+</Tile>
+
+<TwoColumnSection 
+  title="Bagaż" 
+  imgSrc={luggagesImg.src} 
+  imgAlt="Zdjęcie dwóch walizek, kabinowej i rejestrowanej"
+>
+  Zasady dotyczące bagażu kabinowego i bagażu rejestrowanego.
+
+    - <a href="https://help.ryanair.com/hc/pl/sections/12489178346129-Zasady-przewozu-baga%C5%BCu#:~:text=Maksymalne%20wymiary%20baga%C5%BCu%20rejestrowanego%2020,%C3%97%20120%20%C3%97%20120%20cm" target="_blank">Wymiary Ryanair</a>
+  - <a href="https://www.wizzair.com/pl-pl/centrum-pomocy/informacje-dotyczace-rezerwacji-i-uslugi/bagaz/limit-bagazu" target="_blank">Wymiary WizzAir</a>
+</TwoColumnSection>
+
