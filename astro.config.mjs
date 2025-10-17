@@ -3,9 +3,11 @@ import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
   integrations: [react(), mdx(), tailwind()],
   output: 'static',
-  site: 'https://patrykgaluszka.github.io/la-manga-app',
-  base: '/la-manga-app',
+  site: isProd ? 'https://patrykgaluszka.github.io' : 'http://localhost:4321',
+  base: isProd ? '/la-manga-app' : '/',
 });

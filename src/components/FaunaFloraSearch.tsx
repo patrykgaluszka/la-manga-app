@@ -124,9 +124,28 @@ export default function FaunaFloraSearch({ species, seasonalityMap }: FaunaFlora
                 ? 'border-2 border-green-600' 
                 : 'border border-gray-100'
             }`}>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
-                {item.commonName}
-              </h3>
+              <div className="flex items-center gap-3 mb-2">
+                <button
+                  onClick={() => toggleSpeciesCheck(item.commonName)}
+                  className={`mt-1 w-5 h-5 rounded border flex items-center justify-center transition-colors ${
+                    isChecked ? 'bg-green-600 border-green-600' : 'bg-white border-gray-300'
+                  }`}
+                  aria-pressed={isChecked}
+                  aria-label={item.commonName}
+                >
+                  {isChecked && (
+                    <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+                <h3 
+                  className="text-xl font-bold text-gray-800 cursor-pointer hover:text-green-600 transition-colors"
+                  onClick={() => toggleSpeciesCheck(item.commonName)}
+                >
+                  {item.commonName}
+                </h3>
+              </div>
               <p className="text-sm text-gray-500 mb-4">
                 <span className="italic">{item.scientificName}</span> • 🇵🇱 {item.plName} • 🇪🇸 {item.esName} • {seasonalityMap[item.seasonality] || item.seasonality}
               </p>
@@ -135,86 +154,26 @@ export default function FaunaFloraSearch({ species, seasonalityMap }: FaunaFlora
                 {item.imageSrc ? (
                   <div className="md:col-span-1">
                     <div 
-                      className="relative cursor-pointer group"
+                      className="relative cursor-pointer"
                       onClick={() => toggleSpeciesCheck(item.commonName)}
                     >
                       <img 
                         src={item.imageSrc} 
                         alt={item.commonName}
-                        className="w-full h-48 object-contain rounded-lg transition-all duration-200"
+                        className="w-full h-48 object-contain rounded-lg"
                         loading="lazy"
                       />
-                      
-                      {/* Overlay for hover and checked states */}
-                      <div className={`absolute inset-0 rounded-lg transition-all duration-200 hidden md:block ${
-                        isChecked 
-                          ? 'bg-red-500 bg-opacity-0 group-hover:bg-opacity-30' 
-                          : 'bg-green-500 bg-opacity-0 group-hover:bg-opacity-30'
-                      }`}>
-                        {/* Hover icon (check for unchecked, X for checked) */}
-                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${
-                          isChecked ? 'opacity-0 group-hover:opacity-100' : 'opacity-0 group-hover:opacity-100'
-                        }`}>
-                          {isChecked ? (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          ) : (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          )}
-                        </div>
-                        
-                        {/* Checked indicator (small check in corner) */}
-                        {isChecked && (
-                          <div className="absolute top-2 left-2 bg-green-500 rounded-full p-1 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          </div>
-                        )}
-                      </div>
                     </div>
                   </div>
                 ) : (
                   <div className="md:col-span-1">
                     <div 
-                      className="w-full h-48 bg-gradient-to-br from-ocean-100 to-ocean-200 rounded-lg flex items-center justify-center text-ocean-600 cursor-pointer group"
+                      className="relative w-full h-48 bg-gradient-to-br from-ocean-100 to-ocean-200 rounded-lg flex items-center justify-center text-ocean-600 cursor-pointer"
                       onClick={() => toggleSpeciesCheck(item.commonName)}
                     >
                       <div className="text-center">
                         <span className="text-4xl mb-2 block">🐠</span>
                         <span className="text-sm font-medium">Zdjęcie gatunku</span>
-                      </div>
-                      
-                      {/* Overlay for placeholder images */}
-                      <div className={`absolute inset-0 rounded-lg transition-all duration-200 hidden md:block ${
-                        isChecked 
-                          ? 'bg-red-500 bg-opacity-0 group-hover:bg-opacity-30' 
-                          : 'bg-green-500 bg-opacity-0 group-hover:bg-opacity-30'
-                      }`}>
-                        {/* Hover icon */}
-                        <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 opacity-0 group-hover:opacity-100`}>
-                          {isChecked ? (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          ) : (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          )}
-                        </div>
-                        
-                        {/* Checked indicator for placeholder */}
-                        {isChecked && (
-                          <div className="absolute top-2 left-2 bg-green-500 rounded-full p-1 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>

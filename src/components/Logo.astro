@@ -4,10 +4,9 @@ export interface Props {
 }
 
 const { class: className = '' } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<a href={baseUrl} class={`flex items-center space-x-2 text-gray-800 hover:text-ocean-600 transition-colors ${className}`}>
+<a href="/" class={`flex items-center space-x-2 text-gray-800 hover:text-ocean-600 transition-colors ${className}`}>
   <span class="text-4xl">🏝️</span>
   <span class="text-2xl font-bold">La Manga</span>
 </a>

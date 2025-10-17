@@ -115,54 +115,42 @@ export default function DishesSearch({ dishes }: DishesSearchProps) {
                 ? 'border-2 border-green-600' 
                 : 'border border-gray-100'
             }`}>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">
-                {dish.title}
-              </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <button
+                  onClick={() => toggleDishCheck(dish.title)}
+                  className={`mt-1 w-5 h-5 rounded border flex items-center justify-center transition-colors ${
+                    isChecked ? 'bg-green-600 border-green-600' : 'bg-white border-gray-300'
+                  }`}
+                  aria-pressed={isChecked}
+                  aria-label={dish.title}
+                >
+                  {isChecked && (
+                    <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.543-6.543a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+                <h3 
+                  className="text-xl font-bold text-gray-800 cursor-pointer hover:text-green-600 transition-colors"
+                  onClick={() => toggleDishCheck(dish.title)}
+                >
+                  {dish.title}
+                </h3>
+              </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                 {dish.imageSrc ? (
                   <div className="md:col-span-1">
                     <div 
-                      className="relative cursor-pointer group"
+                      className="relative cursor-pointer"
                       onClick={() => toggleDishCheck(dish.title)}
                     >
                       <img 
                         src={dish.imageSrc} 
                         alt={dish.title}
-                        className="w-full h-48 object-cover rounded-lg transition-all duration-200"
+                        className="w-full h-48 object-cover rounded-lg"
                         loading="lazy"
                       />
-                      
-                      {/* Overlay for hover and checked states */}
-                      <div className={`absolute inset-0 rounded-lg transition-all duration-200 hidden md:block ${
-                        isChecked 
-                          ? 'bg-red-500 bg-opacity-0 group-hover:bg-opacity-30' 
-                          : 'bg-green-500 bg-opacity-0 group-hover:bg-opacity-30'
-                      }`}>
-                        {/* Hover icon (check for unchecked, X for checked) */}
-                        <div className={`absolute inset-0 flex items-center justify-center md:transition-opacity md:duration-200 ${
-                          isChecked ? 'opacity-0 group-hover:opacity-100' : 'opacity-0 group-hover:opacity-100'
-                        }`}>
-                          {isChecked ? (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          ) : (
-                            <svg className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          )}
-                        </div>
-                        
-                        {/* Checked indicator (small check in corner) */}
-                        {isChecked && (
-                          <div className="absolute top-2 left-2 bg-green-500 rounded-full p-1 shadow-lg">
-                            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                            </svg>
-                          </div>
-                        )}
-                      </div>
                     </div>
                   </div>
                 ) : null}

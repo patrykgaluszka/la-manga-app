@@ -5,14 +5,10 @@ export interface Props {
 }
 
 const { href, class: className = '' } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
-const fullHref = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') 
-  ? href 
-  : `${baseUrl}/${href}`;
 ---
 
 <a 
-  href={fullHref} 
+  href={href} 
   class={`inline-block bg-ocean-500 text-white px-4 py-2 rounded-lg hover:bg-ocean-600 transition-colors no-underline ${className}`}
   style="text-decoration: none !important; color: white !important;"
 >
