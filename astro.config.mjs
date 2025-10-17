@@ -9,5 +9,5 @@ export default defineConfig({
   integrations: [react(), mdx(), tailwind()],
   output: 'static',
   site: isProd ? 'https://patrykgaluszka.github.io' : 'http://localhost:4321',
-  base: isProd ? '/la-manga-app' : '/',
+  base: isProd ? '/la-manga-app/' : '/',
 });
